@@ -1,6 +1,6 @@
 # dotnetbay - A .NET Auction Bootstrapper 
-#Master: [![Build status](https://ci.appveyor.com/api/projects/status/cpu214e9ipxv83tt/branch/master?svg=true)](https://ci.appveyor.com/project/dpfulg/dotnetbay-hs18/branch/master)
-#Project: [![Build status](https://ci.appveyor.com/api/projects/status/icb7nq9u7spaapfx?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay-hs18)
+#Master: [![Build status](https://ci.appveyor.com/api/projects/status/ya7x6bhb7md2855a/branch/master?svg=true)](https://ci.appveyor.com/project/alainkaiser/dotnetbay-hs18/branch/master)
+#Project: [![Build status](https://ci.appveyor.com/api/projects/status/ya7x6bhb7md2855a?svg=true)](https://ci.appveyor.com/project/alainkaiser/dotnetbay-hs18)
 
 A bootstrap solution to build your own basic auction portal.
 
@@ -29,9 +29,7 @@ The following products / tools are needed to contribute / fork.
 * NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/)
 
 ## Authors
-* Michael Schnyder
-* Martin Kropp
-* Daniel Pfulg
+* Alain Kaiser
 
 ## License
 Licensed under the MIT License
