@@ -14,12 +14,13 @@ using DotNetBay.Data.Entity;
 namespace DotNetBay.WPF
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Startup-Klasse für das WPF Projekt --> App.xaml
     /// </summary>
     public partial class App : Application
     {
-        // Global verfügbare Properties
+        // Global verfügbare Property - MainRepository
         public readonly IMainRepository MainRepository;
+        // Global verfügbare Property - AuctionRunner
         public readonly IAuctionRunner AuctionRunner;
 
         public App()
@@ -31,10 +32,12 @@ namespace DotNetBay.WPF
             this.FillDemoData();
 
             this.AuctionRunner = new AuctionRunner(this.MainRepository);
-            // Starten vom AuctionRunner
+            // Start vom Auction-Runner
             this.AuctionRunner.Start();
         }
 
+        // Erstellt eine Demo-Auktion beim Aufstarten der Applikation
+        // Demo-Auktion wird mittels Auction-Service gespeichert
         private void FillDemoData()
         {
             var memberService = new SimpleMemberService(this.MainRepository);
@@ -46,7 +49,7 @@ namespace DotNetBay.WPF
 
                 service.Save(new Auction
                 {
-                    Title = "My First Auction",
+                    Title = "Meine erste Auktion",
                     StartDateTimeUtc = DateTime.UtcNow.AddSeconds(10),
                     EndDateTimeUtc = DateTime.UtcNow.AddDays(14),
                     StartPrice = 72,
