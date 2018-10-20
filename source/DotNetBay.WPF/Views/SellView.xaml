@@ -13,6 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
+        d:DataContext="{d:DesignInstance Type=local:SellView}"
         mc:Ignorable="d"
         Title="SellView" Height="450" Width="800">
     <Window.Resources>
@@ -44,12 +45,12 @@
         <Label Grid.Row="6" Grid.Column="0" Content="Bild"></Label>
 
         <!-- Gird UI Controls-->
-        <TextBox Grid.Row="1" Grid.Column="1"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1"></TextBox>
-        <TextBox Grid.Row="3" Grid.Column="1"></TextBox>
+        <TextBox Text="{Binding Path=NewAuction.Title}" Grid.Row="1" Grid.Column="1"></TextBox>
+        <TextBox Text="{Binding Path=NewAuction.Description}" Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBox Text="{Binding Path=NewAuction.StartPrice}" Grid.Row="3" Grid.Column="1"></TextBox>
         <wpftk:DateTimePicker TextAlignment="Left" Width="396" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Value="{Binding NewAuction.StartDateTimeUtc}"></wpftk:DateTimePicker>
         <wpftk:DateTimePicker TextAlignment="Left" Width="396" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Value="{Binding NewAuction.EndDateTimeUtc}"></wpftk:DateTimePicker>
-        <TextBox Name="ImagePath" IsReadOnly="True" Grid.Row="6" Grid.Column="1" Margin="0,0,36,0" Text="{Binding FilePathToImage}"></TextBox>
+        <TextBox Name="ImagePath" IsReadOnly="True" Grid.Row="6" Grid.Column="1" Margin="0,0,36,0" Text="{Binding Path=FilePath}"></TextBox>
         <Button Click="ButtonBase_OnClick" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Width="30"></Button>
         <StackPanel Height="30" Grid.Column="2" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
@@ -57,7 +58,7 @@
                     <Setter Property="Margin" Value="15,0,5,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" x:Name="NewAuctionBtn" Content="Neue Auktion" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-2">
+            <Button Click="NewAuctionBtn_OnClick" Style="{DynamicResource MaterialDesignRaisedDarkButton}" x:Name="NewAuctionBtn" Content="Speichern" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-2">
                 <Button.Background>
                     <SolidColorBrush Color="{DynamicResource Color1}"/>
                 </Button.Background>
