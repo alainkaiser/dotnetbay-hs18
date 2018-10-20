@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DotNetBay.WPF.Views
+namespace DotNetBay.WPF
 {
     /// <summary>
     /// Interaction logic for BidView.xaml
@@ -22,6 +22,11 @@ namespace DotNetBay.WPF.Views
         public BidView()
         {
             InitializeComponent();
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

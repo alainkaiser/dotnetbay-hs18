@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
-namespace DotNetBay.WPF.Views
+namespace DotNetBay.WPF
 {
     /// <summary>
     /// Interaction logic for SellView.xaml
@@ -22,6 +24,20 @@ namespace DotNetBay.WPF.Views
         public SellView()
         {
             InitializeComponent();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                ImagePath.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void CancelBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

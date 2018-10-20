@@ -64,5 +64,13 @@ namespace DotNetBay.WPF
             // Öffent Fenster in Dialog-Modus, sodass zurest dieses Fenster geschlossen werden muss, bevor auf Main Window zugegriffen werden kann.
             placeBidView.ShowDialog();
         }
+
+        // Add-New-Auction Click Event Handler
+        // Hier soll Add-New-Auction View geöffent werden
+        private void NewAuctionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var addAuctionView = new SellView();
+            addAuctionView.ShowDialog();
+        }
     }
 }
