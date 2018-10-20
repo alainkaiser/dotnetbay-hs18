@@ -10,26 +10,22 @@ namespace DotNetBay.WPF.Helper
 {
     public class AuctionStateConverter : IValueConverter
     {
+        private const string AuctionStateOpen = "Offen";
+        private const string AuctionStateClosed = "Abgeschlossen";
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var result = "Offen";
-            if (!(bool)value)
+            if (value is bool && (bool)value)
             {
-                result = "Abgeschlossen";
+                return AuctionStateClosed;
             }
 
-            return result;
+            return AuctionStateOpen;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var result = true;
-            if (((string)value).ToLower() == "abgeschlossen")
-            {
-                result = false;
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
     }
 }

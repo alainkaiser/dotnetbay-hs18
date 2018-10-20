@@ -3,7 +3,9 @@ using DotNetBay.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +23,7 @@ namespace DotNetBay.WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         // Service Instanz der Auktionen, um die aktuellen Auktionen zu beziehen
         private readonly AuctionService auctionService;
@@ -30,10 +32,17 @@ namespace DotNetBay.WPF
         // Änderungen an dieser Collection werden automatisch dem UI weitergeleitet
         private ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         // Public Property Auctions, welche Observable Collection zurückgibt
         public ObservableCollection<Auction> Auctions
         {
             get { return this.auctions; }
+            private set
+            {
+                this.auctions = value;
+                OnPropertyChanged();
+            }
         }
 
         public MainWindow()
@@ -71,6 +80,16 @@ namespace DotNetBay.WPF
         {
             var addAuctionView = new SellView();
             addAuctionView.ShowDialog();
+
+            // Update View
+            var allAuctionsFromService = this.auctionService.GetAll();
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = this.PropertyChanged;
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

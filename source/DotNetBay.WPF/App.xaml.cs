@@ -19,9 +19,9 @@ namespace DotNetBay.WPF
     public partial class App : Application
     {
         // Global verfügbare Property - MainRepository
-        public readonly IMainRepository MainRepository;
+        public IMainRepository MainRepository { get; private set; }
         // Global verfügbare Property - AuctionRunner
-        public readonly IAuctionRunner AuctionRunner;
+        public IAuctionRunner AuctionRunner { get; private set; }
 
         public App()
         {

@@ -60,7 +60,7 @@
                 <DataGridTemplateColumn Header="Place Bid">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="50" x:Name="btnPlaceBid" Click="BtnPlaceBid_OnClick" Content="Place">
+                            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="50" Visibility="{Binding Path=IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}" x:Name="btnPlaceBid" Click="BtnPlaceBid_OnClick" Content="Place">
                                 <Button.Background>
                                     <SolidColorBrush Color="{DynamicResource Color1}"/>
                                 </Button.Background>
