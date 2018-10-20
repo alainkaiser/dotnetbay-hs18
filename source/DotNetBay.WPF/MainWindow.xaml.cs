@@ -27,6 +27,7 @@ namespace DotNetBay.WPF
         private readonly AuctionService auctionService;
 
         // Liste der aktuellen Auktionen in einer Observable Collection
+        // Änderungen an dieser Collection werden automatisch dem UI weitergeleitet
         private ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
 
         // Public Property Auctions, welche Observable Collection zurückgibt
@@ -37,17 +38,21 @@ namespace DotNetBay.WPF
 
         public MainWindow()
         {
-            // Aktuelle Instanz der App lokaler Variable zuweisen
-            App app = (App)Application.Current;
-
+            // Initialisierungsarbeiten§
             InitializeComponent();
 
-            // Auctiuon Daten beziehen
+            // Aktuelle Instanz der App einer lokalen Variable zuweisen
+            // App-Instanz wird verwendet, um auf das Main-Repository zuzugreiffen
+            // Main-Repository wird in App-Klasse als public Property angeboten
+            App app = (App)Application.Current;
+
+            // Auction Daten beziehen
             this.auctionService = new AuctionService(app.MainRepository, new SimpleMemberService(app.MainRepository));
             this.auctions = new ObservableCollection<Auction>(this.auctionService.GetAll());
 
             // DataContext des Hauptfensters auf sich selbst setzen
             // Somit können direkt Properties des Hauptfensters für Data-Binding verwendet werden
+            // Konkret soll z.B. die Liste der Auctions (Observable-Collection) verwendet werden
             this.DataContext = this;
         }
     }
