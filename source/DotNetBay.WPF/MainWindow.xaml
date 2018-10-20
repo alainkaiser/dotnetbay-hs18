@@ -14,8 +14,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label x:Name="TitleLabel" Content="Übersicht der Auktionen" FontSize="18" FontWeight="Bold"></Label>
-        <Button x:Name="NewAuctionBtn" Content="Neue Auktion erstellen" HorizontalAlignment="Left" Margin="10,1.2,0,0" VerticalAlignment="Top" Width="80" Grid.Row="1" Background="#FFD3D2D2"/>
-        <DataGrid Name="AuctionsDataGrid" Grid.Row="2" ItemsSource="{Binding Auctions}" AutoGenerateColumns="False" IsReadOnly="True">
+        <Button x:Name="NewAuctionBtn" Padding="5" Content="Neue Auktion erstellen" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Background="#FFD3D2D2" Margin="20,2,0,0"/>
+        <DataGrid Name="AuctionsDataGrid" Grid.Row="2" ItemsSource="{Binding Auctions}" Margin="20" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" />
                 <DataGridTextColumn Header="IsClosed" Binding="{Binding Path= IsClosed}" />
@@ -27,7 +27,13 @@
                 <DataGridTextColumn Header="Seller" Binding="{Binding Path= Seller.DisplayName}" />
                 <DataGridTextColumn Header="Current Winner" Binding="{Binding Path= ActiveBid.Bidder.DisplayName}" />
                 <DataGridTextColumn Header="Closed" Binding="{Binding Path= CloseDateTimeUtc}" />
-                <DataGridTextColumn Header="Place Bid"  />
+                <DataGridTemplateColumn Header="Place Bid">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Height="50" x:Name="btnPlaceBid" Click="BtnPlaceBid_OnClick" Background="#FF67B26A">Place</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

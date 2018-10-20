@@ -55,5 +55,14 @@ namespace DotNetBay.WPF
             // Konkret soll z.B. die Liste der Auctions (Observable-Collection) verwendet werden
             this.DataContext = this;
         }
+
+        // Place-Bid Button Click Event Handler
+        // Hier soll Place-Bid View geöffnet werden
+        private void BtnPlaceBid_OnClick(object sender, RoutedEventArgs e)
+        {
+            var placeBidView = new BidView();
+            // Öffent Fenster in Dialog-Modus, sodass zurest dieses Fenster geschlossen werden muss, bevor auf Main Window zugegriffen werden kann.
+            placeBidView.ShowDialog();
+        }
     }
 }

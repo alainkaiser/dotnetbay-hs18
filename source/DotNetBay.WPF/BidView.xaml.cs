@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DotNetBay.WPF
@@ -18,7 +17,7 @@ namespace DotNetBay.WPF
     /// <summary>
     /// Interaction logic for BidView.xaml
     /// </summary>
-    public partial class BidView : Page
+    public partial class BidView : Window
     {
         public BidView()
         {
