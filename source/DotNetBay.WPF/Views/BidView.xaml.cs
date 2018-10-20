@@ -28,5 +28,10 @@ namespace DotNetBay.WPF
         {
             this.Close();
         }
+
+        private void NewAuctionBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

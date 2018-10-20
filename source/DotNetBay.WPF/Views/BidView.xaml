@@ -55,7 +55,7 @@
                     <Setter Property="Margin" Value="15,0,5,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" x:Name="NewAuctionBtn" Content="Gebot abgeben" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-2">
+            <Button Click="NewAuctionBtn_OnClick" Style="{DynamicResource MaterialDesignRaisedDarkButton}" x:Name="NewAuctionBtn" Content="Gebot abgeben" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,-2">
                 <Button.Background>
                     <SolidColorBrush Color="{DynamicResource Color1}"/>
                 </Button.Background>
